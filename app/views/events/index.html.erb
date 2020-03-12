@@ -1,0 +1,8 @@
+<div class="container">
+  <ul>
+    <% @events.each do |event| %>
+      <li><%= event.title %> - <%= event.date %> - <%= event.location %></li>
+    <% end %>
+  </ul>
+
+</div>

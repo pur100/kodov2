@@ -1,2 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1 class="text-center">HELLO KODO</h1>
+
+<div class="latest_events">
+  <h3>LATEST EVENTS : </h3>
+  <% e = Event.last(3) %>
+  <% e.each do |event| %>
+    <h6><%= event.summarize %></h6>
+  <% end %>
+</div>

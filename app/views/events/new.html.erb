@@ -1,0 +1,29 @@
+<h1 class="text-center text-danger">Create new event</h1>
+
+
+<div class="form-container">
+  <%= simple_form_for [ @user, @event ] do |f| %>
+  <%= f.error_notification %>
+
+<div class="form-group">
+  <%= f.input :title %>
+</div>
+
+
+  <%= f.input :description, type: "textarea" %>
+
+  <%= f.input :picture, as: :file %>
+
+  <%= f.input :seats %>
+
+  <%= f.input :location %>
+
+  <%= f.input :starts_at %>
+  <%= f.input :ends_at %>
+
+  <%= f.button :submit, class: "btn-primary" %>
+   <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+  <% end %>
+
+
+</div>

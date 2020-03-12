@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_12_161500) do
+ActiveRecord::Schema.define(version: 2020_03_12_184536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.integer "seats"
+    t.string "location"
+    t.string "tags", array: true
+    t.string "themes", array: true
+    t.boolean "published", default: false
+    t.boolean "free"
+    t.string "podcast"
+    t.string "video"
+    t.json "payload"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "user_id"
+    t.string "picture"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,6 +45,14 @@ ActiveRecord::Schema.define(version: 2020_03_12_161500) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "superadmin_role", default: false
+    t.boolean "supervisor_role", default: false
+    t.boolean "user_role", default: true
+    t.string "avatar"
+    t.string "description"
+    t.boolean "is_speaker", default: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

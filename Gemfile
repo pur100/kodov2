@@ -9,12 +9,28 @@ gem 'puma'
 gem 'rails', '6.0.2.1'
 gem 'redis'
 
+gem 'jquery-rails'
+
+gem 'geocoder'
+
+gem 'cancancan'
+
+gem 'rails_admin', '~> 2.0'
+
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.12.0'
 gem 'sassc-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+
+gem 'rspec-rails', '~> 3.6'
+gem 'factory_girl_rails'
+gem 'rails-controller-testing'
+gem 'headless'
+gem 'capybara'
+gem 'poltergeist'
+gem 'database_cleaner'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
