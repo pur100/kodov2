@@ -9,6 +9,7 @@
         </div>
         <div class="spec2">
           <div class="specs"><%= @event.seats %></div>
+          <div class="specs">category = <%= @event.category %></div>
 
         </div>
       </div>
@@ -54,7 +55,7 @@
          <%= f.input :seats %>
          <%= f.input :picture, label: 'Profile picture' %>
          <%= f.input :description, label: 'Description' %>
-         <%= f.input :themes, as: :check_boxes, collection: ['Sciences & technologies', 'Histoire & Futur', "Sante & Education", "Economie", "Litterature & Philosophie"], wrapper: :vertical_collection_inline %>
+         <%= f.input :category, collection: Event::CATEGORY %>
          <%= f.submit "validate", class: "btn btn-primary" %>
        <% end %>
       </div>

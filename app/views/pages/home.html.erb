@@ -4,6 +4,6 @@
   <h3>LATEST EVENTS : </h3>
   <% e = Event.last(3) %>
   <% e.each do |event| %>
-    <h6><%= event.summarize %></h6>
+    <h6><%= event.title %></h6>
   <% end %>
 </div>

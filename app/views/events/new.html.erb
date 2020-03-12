@@ -14,6 +14,8 @@
 
   <%= f.input :picture, as: :file %>
 
+  <%= f.input :category, collection: Event::CATEGORY %>
+
   <%= f.input :seats %>
 
   <%= f.input :location %>
