@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_12_195432) do
+ActiveRecord::Schema.define(version: 2020_03_13_103424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2020_03_12_195432) do
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "contributions", force: :cascade do |t|
+    t.bigint "events_id", null: false
+    t.bigint "speakers_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["events_id"], name: "index_contributions_on_events_id"
+    t.index ["speakers_id"], name: "index_contributions_on_speakers_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -44,6 +53,17 @@ ActiveRecord::Schema.define(version: 2020_03_12_195432) do
     t.string "category"
   end
 
+  create_table "speakers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "job_title"
+    t.string "avatar"
+    t.string "specialty"
+    t.string "establishments"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -64,4 +84,6 @@ ActiveRecord::Schema.define(version: 2020_03_12_195432) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "contributions", "events", column: "events_id"
+  add_foreign_key "contributions", "speakers", column: "speakers_id"
 end

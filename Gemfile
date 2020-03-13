@@ -24,6 +24,8 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+gem 'faker'
+
 gem 'rspec-rails', '~> 3.6'
 gem 'factory_girl_rails'
 gem 'rails-controller-testing'
