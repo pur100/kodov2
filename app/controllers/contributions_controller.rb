@@ -14,6 +14,9 @@ class ContributionsController < ApplicationController
   end
 
   def create
+   @contribution = Contribution.new
+   @contribution.events_id = Event.last
+   @contribution.speakers_id = Speaker.last
    @contribution.save!
   end
 
@@ -41,6 +44,14 @@ class ContributionsController < ApplicationController
 
   def set_contribution
     @contribution = Contribution.find(params[:id])
+  end
+
+  def set_speaker
+    @speaker = Speaker.find(params[:id])
+  end
+
+  def set_event
+    @event = Event.find(params[:id])
   end
 
   def contribution_params

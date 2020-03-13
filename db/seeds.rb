@@ -5,7 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+puts "Cleaning database..."
+Event.destroy_all
+Contribution.destroy_all
+Speaker.destroy_all
 
 require 'faker'
 
@@ -27,5 +30,35 @@ puts 'Creating 20 fake events...'
     picture: "https://picsum.photos/200",
   )
   event.save!
+end
+puts 'Finished!'
+
+
+puts 'Creating 10 fake speakers...'
+10.times do
+  speaker = Speaker.new(
+    first_name: "#{Faker::Name.first_name}",
+    last_name:   "#{Faker::Name.last_name}",
+  )
+  speaker.save!
+end
+puts 'Finished!'
+
+@speaker = Speaker.all
+puts Event.all
+puts "______________________________________________________"
+puts @speaker
+puts @speaker.class
+
+
+puts 'Creating 20 fake contributions...'
+20.times do
+  puts Speaker.order("RANDOM()").limit(1).ids
+  puts Event.order("RANDOM()").limit(1).ids
+  contribution = Contribution.new(
+    speakers_id: Speaker.order("RANDOM()").limit(1).ids,
+    events_id:   Event.order("RANDOM()").limit(1).ids,
+  )
+  contribution.save!
 end
 puts 'Finished!'
